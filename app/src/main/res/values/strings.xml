@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pet Adoption App</string>
+    <string name="app_my_pref">mysettings</string>
+    <string name="login_screen_text">Please login \nTo see your new furry friends </string>
+    <string name="register_screen_text">Your new account credentials</string>
+</resources>
