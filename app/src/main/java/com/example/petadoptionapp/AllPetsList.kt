@@ -1,6 +1,7 @@
 package com.example.petadoptionapp
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.Serializable
 import java.util.stream.Collectors.toList
 
 class AllPetsList : AppCompatActivity() {
@@ -24,10 +26,10 @@ class AllPetsList : AppCompatActivity() {
         val httpApiService = myApplication.httpApiService
 
         var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
-        val textView = findViewById<TextView>(R.id.emailView)
+
         val email = mSettings.getString("email", "")
         val token = mSettings.getString("token", "")!!
-        textView.text = token
+
 
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -46,20 +48,13 @@ class AllPetsList : AppCompatActivity() {
                             petsList.add(pet)
                         }
                         createlist(petsList)
-//                    if (petList.size != 0)
-//                        for (item in petList)
-//                            pets.add("Result: " + item.name)
-//                    else
-//                        pets.add("Something went wrong")
 
                     } else {
 
                         Log.e("RETROFIT_ERROR", decodedJsonResult.code().toString())
 
                     }
-//                    } catch (e:Exception){
-//                    Log.d("Register Exception: ", e.message.toString())
-//                }
+
                 }
             }
         }
@@ -71,8 +66,11 @@ class AllPetsList : AppCompatActivity() {
 //            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             petResList.layoutManager = linearLayoutManager
             val adapter = PetListAdapter(pets, object : OnItemClickListener {
-                override fun onClickek(tag: String) {
-                    Toast.makeText(this@AllPetsList, "tag = ${tag}", Toast.LENGTH_SHORT).show()
+                override fun onClicked(item: PetsModel) {
+                    val intent = Intent(applicationContext, PetInfoActivity::class.java)
+                    intent.putExtra("extra_object", item as Serializable)
+                    startActivity(intent)
+                    Toast.makeText(this@AllPetsList, "tag = ${item.name}", Toast.LENGTH_SHORT).show()
                 }
             })
             petResList.adapter = adapter

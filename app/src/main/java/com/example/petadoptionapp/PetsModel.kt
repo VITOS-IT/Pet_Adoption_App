@@ -1,5 +1,7 @@
 package com.example.petadoptionapp
 
+import java.io.Serializable
+
 
 data class PetListModel(
     var pets: List<PetsModel>? = emptyList()
@@ -13,4 +15,4 @@ data class PetsModel(
     var type: String = "",
     var age: Int = 0,
     var vaccinated: Int = 0
-)
+): Serializable

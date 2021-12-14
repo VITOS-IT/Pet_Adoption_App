@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.implementbooks.OnItemClickListener
@@ -23,6 +24,7 @@ class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onC
         val petAgeTypeView: TextView = view.findViewById(R.id.petAgeTypeView)
         val petInfoView: TextView = view.findViewById(R.id.petInfoView)
         val petImgView: ImageView = view.findViewById(R.id.petImgView)
+        val petItemLayout: LinearLayout = view.findViewById(R.id.petItemLayout)
 
     }
 
@@ -51,8 +53,8 @@ class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onC
 
 //        val urlBitmap = dataSet[position].url.toBitmap
 //viewHolder.petImgView.setImageResource()
-        viewHolder.petNameView.setOnClickListener{
-            onClickListener.onClickek(dataSet[position].name)
+        viewHolder.petItemLayout.setOnClickListener{
+            onClickListener.onClicked(dataSet[position])
         }
 
     }

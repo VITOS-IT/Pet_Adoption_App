@@ -17,4 +17,10 @@ interface HttpApiService {
 
     @POST("register")
     suspend fun register(@Body user: User):ResponseBody
+
+    @POST ("users/me/petInterests")
+    suspend fun createNewPetInterest(@Body petId:PetIdClass)
+
+
+
 }

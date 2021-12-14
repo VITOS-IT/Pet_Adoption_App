@@ -12,10 +12,11 @@
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/drawable/splashscreen.xml" value="0.14270833333333333" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_all_pets_list.xml" value="0.24909420289855072" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_pet_info.xml" value="0.21829710144927536" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_register.xml" value="0.24048913043478262" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_start.xml" value="0.264" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/loading_screen.xml" value="0.2" />
-        <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/pet_item_view.xml" value="0.4" />
+        <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/pet_item_view.xml" value="0.1" />
       </map>
     </option>
   </component>

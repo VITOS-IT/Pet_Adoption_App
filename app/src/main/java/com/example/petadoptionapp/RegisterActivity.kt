@@ -3,6 +3,7 @@ package com.example.petadoptionapp
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -59,12 +60,15 @@ class RegisterActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val registerUser = User(maskedEmail, maskedPass)
                 try {
-
-                    val decodedJsonResult = httpApiService.register(registerUser)
+                    httpApiService.register(registerUser)
+                    val decodedJsonResult = httpApiService.login(registerUser)
                     withContext(Dispatchers.Main) {
 
+                        var editor: SharedPreferences.Editor = mSettings.edit()
+                        editor.putString("token", decodedJsonResult.token.toString()).apply()
+                        editor.putString("email", decodedJsonResult.email.toString()).apply()
                         Toast.makeText(applicationContext, "Register OK", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(applicationContext, MainActivity::class.java).apply {
+                        val intent = Intent(applicationContext, AllPetsList::class.java).apply {
 
                         }
                         dialog.dismiss()

@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val APP_PREFERENCES = "mysettings"
 
+
+
+
         var dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.loading_screen)
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         var mSettings = getSharedPreferences(APP_PREFERENCES,Context.MODE_PRIVATE)
         val emailLayout = findViewById<TextInputLayout>(R.id.emailLayout)
         val passLayout = findViewById<TextInputLayout>(R.id.passwordLayout)
+
 
         val loginBtn = findViewById<TextView>(R.id.loginButton)
         val registerBtn = findViewById<TextView>(R.id.redirectToRegister)
