@@ -33,7 +33,7 @@ class AllPetsList : AppCompatActivity() {
 
             val decodedJsonResult = httpApiService.getAllPets()
 
-            var petsList = ArrayList<String>()
+            var petsList = ArrayList<PetsModel>()
 
             withContext(Dispatchers.Main) {
 
@@ -42,7 +42,8 @@ class AllPetsList : AppCompatActivity() {
                     val items = decodedJsonResult.body()?.pets
                     if (items != null) {
                         for (i in 0 until items.count()) {
-                            petsList.add("Result: " + items[i].name)
+                            val pet = PetsModel(items[i].id,items[i].name,items[i].url,items[i].type,items[i].age,items[i].vaccinated)
+                            petsList.add(pet)
                         }
                         createlist(petsList)
 //                    if (petList.size != 0)
@@ -64,10 +65,10 @@ class AllPetsList : AppCompatActivity() {
         }
     }
 
-        fun createlist(pets: ArrayList<String>) {
+        fun createlist(pets: ArrayList<PetsModel>) {
             val petResList = findViewById<RecyclerView>(R.id.allPetsView)
             val linearLayoutManager = LinearLayoutManager(applicationContext)
-            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+//            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             petResList.layoutManager = linearLayoutManager
             val adapter = PetListAdapter(pets, object : OnItemClickListener {
                 override fun onClickek(tag: String) {

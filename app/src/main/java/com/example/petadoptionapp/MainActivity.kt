@@ -72,10 +72,6 @@ class MainActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         Log.d("Login Exception: ", e.localizedMessage)
-                        Log.d("Login Exception: ", e.stackTraceToString())
-                        Log.d("Login Exception: ", e.suppressed.toString())
-                        Log.d("Login Exception: ", e.hashCode().toString())
-                        Log.d("Login Exception: ", e.getLocalizedMessage())
                         dialog.dismiss()
 
                         Toast.makeText(

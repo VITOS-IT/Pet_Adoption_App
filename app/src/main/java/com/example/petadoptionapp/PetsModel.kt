@@ -2,7 +2,7 @@ package com.example.petadoptionapp
 
 
 data class PetListModel(
-    var pets: List<PetsModel>? = null
+    var pets: List<PetsModel>? = emptyList()
 )
 
 
