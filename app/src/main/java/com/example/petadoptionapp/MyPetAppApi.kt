@@ -13,14 +13,9 @@ import okhttp3.Request
 
 
 class MyPetAppApi: Application() {
-
-
-
     public lateinit var httpApiService: HttpApiService
     override fun onCreate() {
         super.onCreate()
-
-
         httpApiService = initPetApiService()
     }
 

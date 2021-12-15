@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val APP_PREFERENCES = "mysettings"
 
-
-
-
         var dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.loading_screen)
@@ -64,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                         var editor:SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
+                        editor.putLong("memberSince", decodedJsonResult.memberSince).apply()
 
                         val token = mSettings.getString("token","")
                         Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()

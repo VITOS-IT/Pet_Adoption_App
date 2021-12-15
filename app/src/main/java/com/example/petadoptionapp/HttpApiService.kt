@@ -7,9 +7,7 @@ import retrofit2.http.*
 
 interface HttpApiService {
 
-
     @GET("pets")
-
     suspend fun getAllPets() : Response<PetListModel>
 
     @POST("login")
@@ -21,6 +19,9 @@ interface HttpApiService {
     @POST ("users/me/petInterests")
     suspend fun createNewPetInterest(@Body petId:PetIdClass)
 
+    @POST("users/me/email")
+    suspend fun changeEmail(@Body email: ChangedEmail) : ResponseBody
 
-
+    @DELETE("users/me")
+    suspend fun deleteAcc() : ResponseBody
 }
