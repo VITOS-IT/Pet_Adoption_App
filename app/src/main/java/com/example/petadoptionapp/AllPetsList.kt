@@ -33,23 +33,23 @@ class AllPetsList : AppCompatActivity() {
         binding.apply {
 
             navView.setNavigationItemSelectedListener {
-//                when(it.itemId){
+                when(it.itemId){
 //                    R.id.profile -> {
 //                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
 //                        }
 //                        startActivity(intent)
 //                    }
-//                    R.id.interest -> {
-//                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
-//                        }
-//                        startActivity(intent)
-//                    }
+                    R.id.interest -> {
+                        val intent = Intent(applicationContext, MyInterestedActivity::class.java).apply {
+                        }
+                        startActivity(intent)
+                    }
 //                    R.id.users -> {
 //                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
 //                        }
 //                        startActivity(intent)
 //                    }
-//                }
+                }
                 drawer.closeDrawer(GravityCompat.START)
                 true
             }
@@ -111,7 +111,7 @@ class AllPetsList : AppCompatActivity() {
                     val intent = Intent(applicationContext, PetInfoActivity::class.java)
                     intent.putExtra("extra_object", item as Serializable)
                     startActivity(intent)
-                    Toast.makeText(this@AllPetsList, "tag = ${item.name}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@AllPetsList, "tag = ${item.name}", Toast.LENGTH_SHORT).show()
                 }
             })
             petResList.adapter = adapter
