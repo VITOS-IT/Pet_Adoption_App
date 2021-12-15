@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="">
+        <menu>
+            <item android:title="Profile" android:id="@+id/profile"/>
+            <item android:title="I`m interested to..." android:id="@+id/interest"/>
+            <item android:title="Other users" android:id="@+id/users"/>
+        </menu>
+    </item>
+
+</menu>
