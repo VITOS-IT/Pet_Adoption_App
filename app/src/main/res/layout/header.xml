@@ -6,16 +6,16 @@
     android:layout_height="200dp">
 
     <TextView
-        android:id="@+id/header_email"
+        android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/avatarProfile" />
 
     <Button
-        android:id="@+id/imageHeader"
+        android:id="@+id/avatarProfile"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="16dp"

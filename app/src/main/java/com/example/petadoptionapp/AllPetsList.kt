@@ -20,7 +20,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.Serializable
-import java.util.stream.Collectors.toList
 
 class AllPetsList : AppCompatActivity() {
     private lateinit var binding: ActivityAllPetsListBinding
@@ -34,21 +33,23 @@ class AllPetsList : AppCompatActivity() {
 
             navView.setNavigationItemSelectedListener {
                 when(it.itemId){
-//                    R.id.profile -> {
-//                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
-//                        }
-//                        startActivity(intent)
-//                    }
-                    R.id.interest -> {
+
+                    R.id.profile -> {
+                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
+                        }
+                        startActivity(intent)
+                    }
+                     R.id.interest -> {
                         val intent = Intent(applicationContext, MyInterestedActivity::class.java).apply {
                         }
                         startActivity(intent)
                     }
-//                    R.id.users -> {
-//                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
-//                        }
-//                        startActivity(intent)
-//                    }
+                    R.id.users -> {
+                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
+                        }
+                        startActivity(intent)
+                    }
+
                 }
                 drawer.closeDrawer(GravityCompat.START)
                 true
@@ -65,9 +66,9 @@ class AllPetsList : AppCompatActivity() {
 // ---------
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val headerView = navigationView.getHeaderView(0)
-        val headerTextView = headerView.findViewById<View>(R.id.header_email) as TextView
+        val headerTextView = headerView.findViewById<View>(R.id.profile_email) as TextView
         headerTextView.text = email
-        val headerImage = headerView.findViewById<View>(R.id.imageHeader) as Button
+        val headerImage = headerView.findViewById<View>(R.id.avatarProfile) as Button
         headerImage.text = email?.get(0).toString()
         headerImage.textSize = 70F
 
@@ -89,13 +90,9 @@ class AllPetsList : AppCompatActivity() {
                             petsList.add(pet)
                         }
                         createlist(petsList)
-
                     } else {
-
                         Log.e("RETROFIT_ERROR", decodedJsonResult.code().toString())
-
                     }
-
                 }
             }
         }
