@@ -12,11 +12,13 @@
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/drawable/splashscreen.xml" value="0.14270833333333333" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_all_pets_list.xml" value="0.24909420289855072" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_my_interested.xml" value="0.24010416666666667" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_pet_info.xml" value="0.21829710144927536" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_register.xml" value="0.24048913043478262" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/activity_start.xml" value="0.264" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/header.xml" value="0.1" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/loading_screen.xml" value="0.2" />
+        <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/pet_interest_item_view.xml" value="0.2463768115942029" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/layout/pet_item_view.xml" value="0.1" />
         <entry key="..\:/Android/Projects/PetAdoptionApp/app/src/main/res/menu/nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/Pets/Pet_Adoption_App/app/src/main/res/layout/activity_change_email.xml" value="0.36666666666666664" />

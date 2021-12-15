@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetAdoptionApp">
         <activity
+
             android:name=".DeleteAccountActivity"
             android:exported="false" />
         <activity
@@ -20,6 +21,10 @@
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
+             android:exported="false" />
+        <activity
+            android:name=".MyInterestedActivity"
+
             android:exported="false" />
         <activity
             android:name=".PetInfoActivity"
