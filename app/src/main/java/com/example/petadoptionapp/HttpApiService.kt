@@ -10,7 +10,7 @@ interface HttpApiService {
     @GET("pets")
 
 
-    suspend fun getAllPets(): Response<PetListModel>
+    suspend fun getAllPets(@Header("Authorization") token: String): Response<PetListModel>
 
 
     @POST("login")
