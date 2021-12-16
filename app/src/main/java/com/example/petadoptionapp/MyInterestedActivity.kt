@@ -1,6 +1,7 @@
 package com.example.petadoptionapp
 
 import android.app.Dialog
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -33,14 +34,17 @@ class MyInterestedActivity : AppCompatActivity() {
     }
 
     fun updateInterestList() {
+        var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
+
         val deniedView = findViewById<TextView>(R.id.notInterestedView)
         val myApplication = application as MyPetAppApi
         val httpApiService = myApplication.httpApiService
         dialog.show()
         CoroutineScope(Dispatchers.IO).launch {
+            val token = mSettings.getString("token", "")!!
 
             val decodedJsonResult = httpApiService.getPetInterest()
-            val decodedPetsJsonResult = httpApiService.getAllPets()
+            val decodedPetsJsonResult = httpApiService.getAllPets("Bearer ${token}")
 
             var petsList = ArrayList<PetsModel>()
             var petMap:MutableMap<Int, Int> = mutableMapOf()
