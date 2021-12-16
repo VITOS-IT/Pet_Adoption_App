@@ -23,4 +23,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatarProfile"
+        app:layout_constraintEnd_toEndOf="@+id/avatarProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/avatarProfile"
+        app:layout_constraintTop_toTopOf="@+id/avatarProfile"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo"
+        android:scaleType="fitCenter"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

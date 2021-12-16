@@ -1,12 +1,16 @@
 package com.example.petadoptionapp
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
@@ -19,6 +23,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.Serializable
 
 class AllPetsList : AppCompatActivity() {
@@ -69,8 +76,24 @@ class AllPetsList : AppCompatActivity() {
         val headerTextView = headerView.findViewById<View>(R.id.profile_email) as TextView
         headerTextView.text = email
         val headerImage = headerView.findViewById<View>(R.id.avatarProfile) as Button
+        val imageButton = headerView.findViewById<View>(R.id.imageButton) as ImageView
         headerImage.text = email?.get(0).toString()
         headerImage.textSize = 70F
+
+        try {
+            val cw = ContextWrapper(applicationContext)
+            val directory: File = cw.getDir("imageDir", Context.MODE_PRIVATE)
+            val mypath = File(directory, "profile.jpg")
+            val b = BitmapFactory.decodeStream(FileInputStream(mypath))
+            if (mypath.exists()){
+                imageButton.setImageBitmap(b)
+                imageButton.setBackgroundColor(Color.TRANSPARENT)
+                headerImage.text = ""
+                headerImage.background = null
+            }
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
 
 //        ----------
         CoroutineScope(Dispatchers.IO).launch {

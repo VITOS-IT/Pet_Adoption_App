@@ -22,7 +22,6 @@ class StartActivity : AppCompatActivity() {
         Timer("SettingUp", false).schedule(3000) {
             startActivity(intent)
             finish()
-
         }
     }
 }

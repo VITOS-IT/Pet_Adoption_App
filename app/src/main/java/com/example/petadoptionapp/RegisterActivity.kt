@@ -63,13 +63,11 @@ class RegisterActivity : AppCompatActivity() {
                     httpApiService.register(registerUser)
                     val decodedJsonResult = httpApiService.login(registerUser)
                     withContext(Dispatchers.Main) {
-
                         var editor: SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
                         Toast.makeText(applicationContext, "Register OK", Toast.LENGTH_SHORT).show()
                         val intent = Intent(applicationContext, AllPetsList::class.java).apply {
-
                         }
                         dialog.dismiss()
 
