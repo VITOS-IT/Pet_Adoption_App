@@ -1,14 +1,17 @@
 package com.example.petadoptionapp
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.Serializable
 
 class AllPetsList : AppCompatActivity() {
@@ -26,16 +32,21 @@ class AllPetsList : AppCompatActivity() {
     private lateinit var binding: ActivityAllPetsListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 //        petResList = findViewById<RecyclerView>(R.id.allPetsView)
 //        setContentView(R.layout.activity_all_pets_list)
+
         setTitle(R.string.petlisttitle)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_humburg_foreground)
+
         binding = ActivityAllPetsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
 
             navView.setNavigationItemSelectedListener {
                 when(it.itemId){
-
                     R.id.profile -> {
                         val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
                         }
@@ -47,11 +58,10 @@ class AllPetsList : AppCompatActivity() {
                         startActivity(intent)
                     }
                     R.id.users -> {
-                        val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
+                        val intent = Intent(applicationContext, OtherUsersActivity::class.java).apply {
                         }
                         startActivity(intent)
                     }
-
                 }
                 drawer.closeDrawer(GravityCompat.START)
                 true
@@ -70,8 +80,24 @@ class AllPetsList : AppCompatActivity() {
         val headerTextView = headerView.findViewById<View>(R.id.profile_email) as TextView
         headerTextView.text = email
         val headerImage = headerView.findViewById<View>(R.id.avatarProfile) as Button
+        val imageButton = headerView.findViewById<View>(R.id.imageButton) as ImageView
         headerImage.text = email?.get(0).toString()
         headerImage.textSize = 70F
+
+        try {
+            val cw = ContextWrapper(applicationContext)
+            val directory: File = cw.getDir("imageDir", Context.MODE_PRIVATE)
+            val mypath = File(directory, "profile.jpg")
+            val b = BitmapFactory.decodeStream(FileInputStream(mypath))
+            if (mypath.exists()){
+                imageButton.setImageBitmap(b)
+                imageButton.setBackgroundColor(Color.TRANSPARENT)
+                headerImage.text = ""
+                headerImage.background = null
+            }
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
 
 //        ----------
         CoroutineScope(Dispatchers.IO).launch {
@@ -114,4 +140,16 @@ class AllPetsList : AppCompatActivity() {
             })
             petResList.adapter = adapter
         }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                if (binding.drawer.isDrawerOpen(GravityCompat.START))
+                    binding.drawer.closeDrawer(GravityCompat.START)
+                else binding.drawer.openDrawer(GravityCompat.START)
+                return true
+            }
+        }
+        return true
     }
+}

@@ -2,11 +2,9 @@ package com.example.petadoptionapp
 
 import java.io.Serializable
 
-
 data class PetListModel(
     var pets: List<PetsModel>? = emptyList()
 )
-
 
 data class PetsModel(
     var id: Int = 1,

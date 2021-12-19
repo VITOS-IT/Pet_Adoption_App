@@ -1,0 +1,37 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:columnCount="2"
+    android:rowCount="2">
+
+    <Button
+        android:id="@+id/userLetterBtn"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/emailView"
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/interestView"
+        android:layout_width="392dp"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:text="TextView" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+</GridLayout>
