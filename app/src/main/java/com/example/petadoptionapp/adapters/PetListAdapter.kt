@@ -1,7 +1,5 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.adapters
 
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +7,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.implementbooks.OnItemClickListener
+import com.example.petadoptionapp.listeners.OnItemClickListener
+import com.example.petadoptionapp.PetsModel
+import com.example.petadoptionapp.R
 import com.squareup.picasso.Picasso
 
 class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onClickListener: OnItemClickListener) :

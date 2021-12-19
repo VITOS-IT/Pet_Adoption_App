@@ -1,9 +1,10 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.petadoptionapp.R
 import java.util.*
 import kotlin.concurrent.schedule
 

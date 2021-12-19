@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.app.Activity
 import android.content.Context
@@ -7,20 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import java.sql.Timestamp
 import java.util.*
 import android.content.ContextWrapper
 import android.graphics.Bitmap
-import android.net.Uri
 import android.widget.ImageButton
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.View
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import com.example.petadoptionapp.R
 import java.io.*
 
 private const val FILE_NAME = "photo.jpg"

@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -14,8 +14,12 @@ import android.widget.*
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.implementbooks.OnItemClickListener
+import com.example.petadoptionapp.PetsModel
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.listeners.OnItemClickListener
+import com.example.petadoptionapp.adapters.PetListAdapter
 import com.example.petadoptionapp.databinding.ActivityAllPetsListBinding
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

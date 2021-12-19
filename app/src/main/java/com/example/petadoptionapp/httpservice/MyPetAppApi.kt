@@ -1,13 +1,11 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.httpservice
 
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import android.widget.TextView
 import com.fasterxml.jackson.databind.ObjectMapper
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import okhttp3.Interceptor
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

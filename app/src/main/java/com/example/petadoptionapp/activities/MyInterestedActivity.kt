@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.app.Dialog
 import android.content.Context
@@ -8,11 +8,13 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.implementbooks.OnItemClickListener
-import com.example.implementbooks.OnItemRemoveClickListener
+import com.example.petadoptionapp.PetsModel
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.listeners.OnItemRemoveClickListener
+import com.example.petadoptionapp.adapters.PetInterestListAdapter
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

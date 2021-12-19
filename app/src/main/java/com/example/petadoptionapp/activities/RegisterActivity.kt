@@ -1,76 +1,81 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.data.User
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
-import java.lang.Exception
-import java.util.*
+import kotlin.Exception
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val APP_PREFERENCES = "mysettings"
+        setContentView(R.layout.activity_register)
 
         var dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.loading_screen)
         dialog.setCanceledOnTouchOutside(false)
 
-        var mSettings = getSharedPreferences(APP_PREFERENCES,Context.MODE_PRIVATE)
-        val emailLayout = findViewById<TextInputLayout>(R.id.emailLayout)
-        val passLayout = findViewById<TextInputLayout>(R.id.passwordLayout)
+
+        val APP_PREFERENCES = "mysettings"
+        var mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
 
-        val loginBtn = findViewById<TextView>(R.id.loginButton)
-        val registerBtn = findViewById<TextView>(R.id.redirectToRegister)
+        val emailLayout = findViewById<TextInputLayout>(R.id.emailLayoutRegister)
+        val passLayout = findViewById<TextInputLayout>(R.id.passwordLayoutRegister)
+
+        val registerBtn = findViewById<TextView>(R.id.registerButton)
 
         val myApplication = application as MyPetAppApi
         val httpApiService = myApplication.httpApiService
 
-        loginBtn.setOnClickListener {
+        registerBtn.setOnClickListener {
+            dialog.show()
+
+
             val email = emailLayout.editText?.text.toString()
             val password = passLayout.editText?.text?.toString()
-            dialog.show()
 
             var maskedEmail = if (email.isNullOrEmpty()) ""
             else email.lowercase()
             var maskedPass = if (password.isNullOrEmpty()) ""
             else password.lowercase()
             CoroutineScope(Dispatchers.IO).launch {
-                val loginUser = User(maskedEmail, maskedPass)
+                val registerUser = User(maskedEmail, maskedPass)
                 try {
-                    val decodedJsonResult = httpApiService.login(loginUser)
+                    httpApiService.register(registerUser)
+                    val decodedJsonResult = httpApiService.login(registerUser)
                     withContext(Dispatchers.Main) {
-
-                        val editor:SharedPreferences.Editor = mSettings.edit()
+                        var editor: SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
-                        editor.putLong("memberSince", decodedJsonResult.memberSince).apply()
+                        Toast.makeText(applicationContext, "Register OK", Toast.LENGTH_SHORT).show()
                         val intent = Intent(applicationContext, AllPetsList::class.java).apply {
-
                         }
-
                         dialog.dismiss()
+
                         startActivity(intent)
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Log.d("Login Exception: ", e.localizedMessage)
+
+                        Log.d("Register Exception: ", e.message.toString())
                         dialog.dismiss()
 
                         Toast.makeText(
@@ -80,12 +85,9 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-            }
-        }
 
-        registerBtn.setOnClickListener {
-            val intent = Intent(applicationContext, RegisterActivity::class.java).apply { }
-            startActivity(intent)
+
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.httpservice
 
-import android.service.autofill.UserData
+import com.example.petadoptionapp.*
+import com.example.petadoptionapp.data.IpResult
+import com.example.petadoptionapp.data.PetIdClass
+import com.example.petadoptionapp.data.User
 import okhttp3.ResponseBody
-import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
 

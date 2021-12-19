@@ -17,7 +17,7 @@
     </queries>
 
     <application
-        android:name=".MyPetAppApi"
+        android:name=".httpservice.MyPetAppApi"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,28 +25,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetAdoptionApp">
         <activity
-            android:name=".OtherUsersActivity"
+            android:name=".activities.OtherUsersActivity"
             android:exported="false"/>
         <activity          
-            android:name=".LoginHistoryActivity"
+            android:name=".activities.LoginHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".DeleteAccountActivity"
+            android:name=".activities.DeleteAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangeEmailActivity"
+            android:name=".activities.ChangeEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".MyInterestedActivity"
+            android:name=".activities.MyInterestedActivity"
             android:exported="false" />
         <activity
-            android:name=".PetInfoActivity"
+            android:name=".activities.PetInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".StartActivity"
+            android:name=".activities.StartActivity"
             android:exported="true">
 
             <!-- android:theme="@style/SplashTheme"> -->
@@ -57,13 +57,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".AllPetsList"
+            android:name=".activities.AllPetsList"
             android:exported="true"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true" />
 
         <provider
