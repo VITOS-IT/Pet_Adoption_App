@@ -11,7 +11,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-
 class MyPetAppApi: Application() {
     public lateinit var httpApiService: HttpApiService
     override fun onCreate() {
