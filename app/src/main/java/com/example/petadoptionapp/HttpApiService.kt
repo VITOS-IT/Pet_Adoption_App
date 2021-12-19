@@ -8,8 +8,6 @@ import retrofit2.http.*
 interface HttpApiService {
 
     @GET("pets")
-
-
     suspend fun getAllPets(@Header("Authorization") token: String): Response<PetListModel>
 
 
@@ -35,4 +33,7 @@ interface HttpApiService {
 
     @DELETE("users/me")
     suspend fun deleteAcc() : ResponseBody
+
+    @GET("users/me/loginHistory")
+    suspend fun getHistory(): Response<LoginHistoryDTO>
 }
