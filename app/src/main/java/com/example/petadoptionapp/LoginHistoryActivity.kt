@@ -24,7 +24,7 @@ class LoginHistoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_history)
 
         var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
-
+        val token = mSettings.getString("token", "")!!
         val memberSinceLong = mSettings.getLong("memberSince", 0L)
         val memberView = findViewById<TextView>(R.id.memberSinceView)
         memberView.text = "Member since: ${getDateTime(memberSinceLong)}"
@@ -33,7 +33,7 @@ class LoginHistoryActivity : AppCompatActivity() {
         val httpApiService = myApplication.httpApiService
 
         CoroutineScope(Dispatchers.IO).launch {
-            val decodedJsonResult = httpApiService.getHistory()
+            val decodedJsonResult = httpApiService.getHistory("Bearer ${token}")
 
             var historyList = ArrayList<Long>()
 

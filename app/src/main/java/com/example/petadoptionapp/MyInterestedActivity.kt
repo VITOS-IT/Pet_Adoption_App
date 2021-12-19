@@ -43,7 +43,7 @@ class MyInterestedActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val token = mSettings.getString("token", "")!!
 
-            val decodedJsonResult = httpApiService.getPetInterest()
+            val decodedJsonResult = httpApiService.getPetInterest("Bearer ${token}")
             val decodedPetsJsonResult = httpApiService.getAllPets("Bearer ${token}")
 
             var petsList = ArrayList<PetsModel>()
