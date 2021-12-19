@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.app.Dialog
 import android.content.Context
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.widget.TextView
+import com.example.petadoptionapp.ChangedEmail
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,9 @@ import android.util.Log
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.adapters.LoginHistoryAdapter
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

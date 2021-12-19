@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.UserData
 
 class UsersAdapter (private val users: List<UserData>) :
     RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {

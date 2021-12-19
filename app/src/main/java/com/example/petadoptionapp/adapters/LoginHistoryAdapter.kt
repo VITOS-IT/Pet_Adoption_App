@@ -1,10 +1,11 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.petadoptionapp.R
 import java.text.SimpleDateFormat
 
 class LoginHistoryAdapter(private val dataSet: ArrayList<Long>) :

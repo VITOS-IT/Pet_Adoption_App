@@ -1,4 +1,4 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.data
 
 data class IpResult(
     var id: Int = 0,

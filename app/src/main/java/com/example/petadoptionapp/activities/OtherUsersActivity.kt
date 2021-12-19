@@ -1,18 +1,19 @@
-package com.example.petadoptionapp
+package com.example.petadoptionapp.activities
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.implementbooks.OnItemClickListener
+import com.example.petadoptionapp.R
+import com.example.petadoptionapp.UserData
+import com.example.petadoptionapp.adapters.UsersAdapter
+import com.example.petadoptionapp.httpservice.MyPetAppApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.Serializable
 
 class OtherUsersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
