@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface HttpApiService {
 
     @GET("pets")
-    suspend fun getAllPets(): Response<PetListModel>
+    suspend fun getAllPets(@Header("Authorization") token: String): Response<PetListModel>
 
     @POST("login")
     suspend fun login(@Body user: User): IpResult
@@ -34,4 +34,8 @@ interface HttpApiService {
 
     @GET("users")
     suspend fun getUsers() : Response<UsersData>
+
+    @GET("users/me/loginHistory")
+    suspend fun getHistory(): Response<LoginHistoryDTO>
+
 }

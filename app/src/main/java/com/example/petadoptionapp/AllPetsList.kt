@@ -28,9 +28,14 @@ import java.io.FileNotFoundException
 import java.io.Serializable
 
 class AllPetsList : AppCompatActivity() {
+    lateinit var petResList :RecyclerView
     private lateinit var binding: ActivityAllPetsListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        petResList = findViewById<RecyclerView>(R.id.allPetsView)
+//        setContentView(R.layout.activity_all_pets_list)
+
         setTitle(R.string.petlisttitle)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_humburg_foreground)
@@ -62,14 +67,13 @@ class AllPetsList : AppCompatActivity() {
                 true
             }
         }
-
         val myApplication = application as MyPetAppApi
         val httpApiService = myApplication.httpApiService
 
         var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
 
         val email = mSettings.getString("email", "")
-        val token = mSettings.getString("token", "")!!
+
 // ---------
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val headerView = navigationView.getHeaderView(0)
@@ -97,8 +101,8 @@ class AllPetsList : AppCompatActivity() {
 
 //        ----------
         CoroutineScope(Dispatchers.IO).launch {
-
-            val decodedJsonResult = httpApiService.getAllPets()
+            val token = mSettings.getString("token", "")!!
+            val decodedJsonResult = httpApiService.getAllPets("Bearer ${token}")
 
             var petsList = ArrayList<PetsModel>()
 
@@ -122,7 +126,7 @@ class AllPetsList : AppCompatActivity() {
     }
 
         fun createlist(pets: ArrayList<PetsModel>) {
-            val petResList = findViewById<RecyclerView>(R.id.allPetsView)
+            petResList = findViewById<RecyclerView>(R.id.allPetsView)
             val linearLayoutManager = LinearLayoutManager(applicationContext)
 //            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             petResList.layoutManager = linearLayoutManager

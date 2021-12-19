@@ -26,6 +26,9 @@
         android:theme="@style/Theme.PetAdoptionApp">
         <activity
             android:name=".OtherUsersActivity"
+            android:exported="false"
+        <activity          
+            android:name=".LoginHistoryActivity"
             android:exported="false" />
         <activity
             android:name=".DeleteAccountActivity"
