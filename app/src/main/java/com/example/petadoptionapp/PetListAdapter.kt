@@ -15,10 +15,7 @@ import com.squareup.picasso.Picasso
 class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onClickListener: OnItemClickListener) :
     RecyclerView.Adapter<PetListAdapter.ViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val petNameView: TextView = view.findViewById(R.id.petNameView)
         val petAgeTypeView: TextView = view.findViewById(R.id.petAgeTypeView)
@@ -28,16 +25,13 @@ class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onC
 
     }
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.pet_item_view, viewGroup, false)
 
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val imageUri:String = dataSet[position].url
         Picasso.get().load(imageUri).into(viewHolder.petImgView);
@@ -51,15 +45,12 @@ class PetListAdapter (private val dataSet: ArrayList<PetsModel>, private val onC
         viewHolder.petAgeTypeView.text = typeAge
         viewHolder.petInfoView.text = "some info"
 
-//        val urlBitmap = dataSet[position].url.toBitmap
-//viewHolder.petImgView.setImageResource()
         viewHolder.petItemLayout.setOnClickListener{
             onClickListener.onClicked(dataSet[position])
         }
 
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
 
 }
