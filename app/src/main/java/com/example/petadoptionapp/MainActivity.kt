@@ -57,15 +57,10 @@ class MainActivity : AppCompatActivity() {
                     val decodedJsonResult = httpApiService.login(loginUser)
                     withContext(Dispatchers.Main) {
 
-//                        Toast.makeText(applicationContext, decodedJsonResult.token, Toast.LENGTH_SHORT).show()
                         val editor:SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
                         editor.putLong("memberSince", decodedJsonResult.memberSince).apply()
-
-
-//                        val token = mSettings.getString("token","")
-//                        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
                         val intent = Intent(applicationContext, AllPetsList::class.java).apply {
 
                         }

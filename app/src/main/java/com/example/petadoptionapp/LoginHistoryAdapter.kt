@@ -10,29 +10,22 @@ import java.text.SimpleDateFormat
 class LoginHistoryAdapter(private val dataSet: ArrayList<Long>) :
     RecyclerView.Adapter<LoginHistoryAdapter.ViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val loginHistoryItemView: TextView = view.findViewById<TextView>(R.id.loginHistoryItemView)
     }
 
-    // Create new views (invoked by the layout manager)
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.login_history_item_view, viewGroup, false)
 
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.loginHistoryItemView.text = "Logged in: ${getDateTime(dataSet[position])}"
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
 
 
