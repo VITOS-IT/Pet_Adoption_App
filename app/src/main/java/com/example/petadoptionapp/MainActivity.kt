@@ -54,16 +54,20 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val loginUser = User(maskedEmail, maskedPass)
                 try {
+
                     val decodedJsonResult = httpApiService.login(loginUser)
                     withContext(Dispatchers.Main) {
-                        var editor:SharedPreferences.Editor = mSettings.edit()
+//                        Toast.makeText(applicationContext, decodedJsonResult.token, Toast.LENGTH_SHORT).show()
+                        val editor:SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
                         editor.putLong("memberSince", decodedJsonResult.memberSince).apply()
 
-                        val token = mSettings.getString("token","")
-                        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(applicationContext, AllPetsList::class.java).apply { }
+//                        val token = mSettings.getString("token","")
+//                        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(applicationContext, AllPetsList::class.java).apply {
+
+                        }
                         dialog.dismiss()
                         startActivity(intent)
                     }
@@ -79,11 +83,14 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+
+
             }
         }
-
         registerBtn.setOnClickListener {
-            val intent = Intent(applicationContext, RegisterActivity::class.java).apply { }
+            val intent = Intent(applicationContext, RegisterActivity::class.java).apply {
+
+            }
             startActivity(intent)
         }
     }

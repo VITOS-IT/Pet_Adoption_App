@@ -2,6 +2,7 @@ package com.example.petadoptionapp
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.widget.TextView
 import com.fasterxml.jackson.databind.ObjectMapper
 import retrofit2.Retrofit
@@ -20,8 +21,8 @@ class MyPetAppApi: Application() {
 
     private fun initPetApiService(): HttpApiService {
         var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
-        val token = mSettings.getString("token", "")!!
-
+        var token = mSettings.getString("token", "")!!
+Log.d("somoe lodfjfigj: ",token)
         val client = OkHttpClient.Builder().addInterceptor { chain ->
             val newRequest: Request = chain.request().newBuilder()
                 .addHeader("Authorization", "Bearer $token")

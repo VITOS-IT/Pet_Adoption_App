@@ -100,9 +100,9 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         history.setOnClickListener {
-//            val intent = Intent(applicationContext, LoginHistory::class.java).apply {
-//            }
-//            startActivity(intent)
+            val intent = Intent(applicationContext, LoginHistoryActivity::class.java).apply {
+            }
+            startActivity(intent)
         }
 
     }
