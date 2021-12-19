@@ -1,6 +1,5 @@
 package com.example.petadoptionapp
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
@@ -28,13 +27,10 @@ import java.io.FileNotFoundException
 import java.io.Serializable
 
 class AllPetsList : AppCompatActivity() {
-    lateinit var petResList :RecyclerView
+    lateinit var petResList: RecyclerView
     private lateinit var binding: ActivityAllPetsListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        petResList = findViewById<RecyclerView>(R.id.allPetsView)
-//        setContentView(R.layout.activity_all_pets_list)
 
         setTitle(R.string.petlisttitle)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
@@ -46,20 +42,22 @@ class AllPetsList : AppCompatActivity() {
         binding.apply {
 
             navView.setNavigationItemSelectedListener {
-                when(it.itemId){
+                when (it.itemId) {
                     R.id.profile -> {
                         val intent = Intent(applicationContext, ProfileActivity::class.java).apply {
                         }
                         startActivity(intent)
                     }
-                     R.id.interest -> {
-                        val intent = Intent(applicationContext, MyInterestedActivity::class.java).apply {
-                        }
+                    R.id.interest -> {
+                        val intent =
+                            Intent(applicationContext, MyInterestedActivity::class.java).apply {
+                            }
                         startActivity(intent)
                     }
                     R.id.users -> {
-                        val intent = Intent(applicationContext, OtherUsersActivity::class.java).apply {
-                        }
+                        val intent =
+                            Intent(applicationContext, OtherUsersActivity::class.java).apply {
+                            }
                         startActivity(intent)
                     }
                 }
@@ -74,7 +72,7 @@ class AllPetsList : AppCompatActivity() {
 
         val email = mSettings.getString("email", "")
 
-// ---------
+
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val headerView = navigationView.getHeaderView(0)
         val headerTextView = headerView.findViewById<View>(R.id.profile_email) as TextView
@@ -89,7 +87,7 @@ class AllPetsList : AppCompatActivity() {
             val directory: File = cw.getDir("imageDir", Context.MODE_PRIVATE)
             val mypath = File(directory, "profile.jpg")
             val b = BitmapFactory.decodeStream(FileInputStream(mypath))
-            if (mypath.exists()){
+            if (mypath.exists()) {
                 imageButton.setImageBitmap(b)
                 imageButton.setBackgroundColor(Color.TRANSPARENT)
                 headerImage.text = ""
@@ -99,7 +97,6 @@ class AllPetsList : AppCompatActivity() {
             e.printStackTrace()
         }
 
-//        ----------
         CoroutineScope(Dispatchers.IO).launch {
             val token = mSettings.getString("token", "")!!
             val decodedJsonResult = httpApiService.getAllPets("Bearer ${token}")
@@ -113,7 +110,14 @@ class AllPetsList : AppCompatActivity() {
                     val items = decodedJsonResult.body()?.pets
                     if (items != null) {
                         for (i in 0 until items.count()) {
-                            val pet = PetsModel(items[i].id,items[i].name,items[i].url,items[i].type,items[i].age,items[i].vaccinated)
+                            val pet = PetsModel(
+                                items[i].id,
+                                items[i].name,
+                                items[i].url,
+                                items[i].type,
+                                items[i].age,
+                                items[i].vaccinated
+                            )
                             petsList.add(pet)
                         }
                         createlist(petsList)
@@ -125,21 +129,19 @@ class AllPetsList : AppCompatActivity() {
         }
     }
 
-        fun createlist(pets: ArrayList<PetsModel>) {
-            petResList = findViewById<RecyclerView>(R.id.allPetsView)
-            val linearLayoutManager = LinearLayoutManager(applicationContext)
-//            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-            petResList.layoutManager = linearLayoutManager
-            val adapter = PetListAdapter(pets, object : OnItemClickListener {
-                override fun onClicked(item: PetsModel) {
-                    val intent = Intent(applicationContext, PetInfoActivity::class.java)
-                    intent.putExtra("extra_object", item as Serializable)
-                    startActivity(intent)
-//                    Toast.makeText(this@AllPetsList, "tag = ${item.name}", Toast.LENGTH_SHORT).show()
-                }
-            })
-            petResList.adapter = adapter
-        }
+    fun createlist(pets: ArrayList<PetsModel>) {
+        petResList = findViewById<RecyclerView>(R.id.allPetsView)
+        val linearLayoutManager = LinearLayoutManager(applicationContext)
+        petResList.layoutManager = linearLayoutManager
+        val adapter = PetListAdapter(pets, object : OnItemClickListener {
+            override fun onClicked(item: PetsModel) {
+                val intent = Intent(applicationContext, PetInfoActivity::class.java)
+                intent.putExtra("extra_object", item as Serializable)
+                startActivity(intent)
+            }
+        })
+        petResList.adapter = adapter
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -151,5 +153,8 @@ class AllPetsList : AppCompatActivity() {
             }
         }
         return true
+    }
+    override fun onBackPressed() {
+        finishAffinity()
     }
 }
