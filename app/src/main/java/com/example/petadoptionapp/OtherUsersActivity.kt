@@ -1,5 +1,6 @@
 package com.example.petadoptionapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,10 +21,11 @@ class OtherUsersActivity : AppCompatActivity() {
 
         val myApplication = application as MyPetAppApi
         val httpApiService = myApplication.httpApiService
-
+        var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
+        val token = mSettings.getString("token", "")!!
         CoroutineScope(Dispatchers.IO).launch {
 
-            val decodedJsonResult = httpApiService.getUsers()
+            val decodedJsonResult = httpApiService.getUsers("Bearer ${token}")
 
             var userList = ArrayList<UserData>()
 

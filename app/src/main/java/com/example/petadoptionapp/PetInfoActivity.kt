@@ -70,14 +70,9 @@ class PetInfoActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
 
                 try {
-                    val decodedJsonResult = httpApiService.createNewPetInterest(petId)
-
+                    httpApiService.createNewPetInterest(petId)
                     withContext(Dispatchers.Main) {
-
-
                         Toast.makeText(applicationContext, "Pet add to interested", Toast.LENGTH_SHORT).show()
-                        Log.d("Add pet Exception: ", decodedJsonResult.toString())
-
                         dialog.dismiss()
 
                          }
