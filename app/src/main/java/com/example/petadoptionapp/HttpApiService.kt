@@ -24,7 +24,7 @@ interface HttpApiService {
     suspend fun changeEmail(@Body email: ChangedEmail) : ResponseBody
 
     @GET("users/me/petInterests")
-    suspend fun getPetInterest() :Response<InterestedListModel>
+    suspend fun getPetInterest(@Header("Authorization") token: String) :Response<InterestedListModel>
 
     @DELETE("users/me/petInterests/{petInterestId}")
     suspend fun deletePetInterest(@Path("petInterestId") petInterestId:Int)
@@ -33,9 +33,9 @@ interface HttpApiService {
     suspend fun deleteAcc() : ResponseBody
 
     @GET("users")
-    suspend fun getUsers() : Response<UsersData>
+    suspend fun getUsers(@Header("Authorization") token: String) : Response<UsersData>
 
     @GET("users/me/loginHistory")
-    suspend fun getHistory(): Response<LoginHistoryDTO>
+    suspend fun getHistory(@Header("Authorization") token: String): Response<LoginHistoryDTO>
 
 }
