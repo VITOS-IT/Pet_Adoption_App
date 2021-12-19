@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val APP_PREFERENCES = "mysettings"
 
-
-
-
         var dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.loading_screen)
@@ -57,19 +54,22 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val loginUser = User(maskedEmail, maskedPass)
                 try {
-
                     val decodedJsonResult = httpApiService.login(loginUser)
                     withContext(Dispatchers.Main) {
+
 //                        Toast.makeText(applicationContext, decodedJsonResult.token, Toast.LENGTH_SHORT).show()
-                        var editor:SharedPreferences.Editor = mSettings.edit()
+                        val editor:SharedPreferences.Editor = mSettings.edit()
                         editor.putString("token", decodedJsonResult.token.toString()).apply()
                         editor.putString("email", decodedJsonResult.email.toString()).apply()
+                        editor.putLong("memberSince", decodedJsonResult.memberSince).apply()
 
-                        val token = mSettings.getString("token","")
-                        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
+
+//                        val token = mSettings.getString("token","")
+//                        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
                         val intent = Intent(applicationContext, AllPetsList::class.java).apply {
 
                         }
+
                         dialog.dismiss()
                         startActivity(intent)
                     }
@@ -85,14 +85,11 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
-
             }
         }
-        registerBtn.setOnClickListener {
-            val intent = Intent(applicationContext, RegisterActivity::class.java).apply {
 
-            }
+        registerBtn.setOnClickListener {
+            val intent = Intent(applicationContext, RegisterActivity::class.java).apply { }
             startActivity(intent)
         }
     }

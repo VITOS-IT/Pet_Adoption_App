@@ -2,6 +2,7 @@ package com.example.petadoptionapp
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.widget.TextView
 import com.fasterxml.jackson.databind.ObjectMapper
 import retrofit2.Retrofit
@@ -11,23 +12,17 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-
 class MyPetAppApi: Application() {
-
-
-
     public lateinit var httpApiService: HttpApiService
     override fun onCreate() {
         super.onCreate()
-
-
         httpApiService = initPetApiService()
     }
 
     private fun initPetApiService(): HttpApiService {
         var mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
-        val token = mSettings.getString("token", "")!!
-
+        var token = mSettings.getString("token", "")!!
+Log.d("somoe lodfjfigj: ",token)
         val client = OkHttpClient.Builder().addInterceptor { chain ->
             val newRequest: Request = chain.request().newBuilder()
                 .addHeader("Authorization", "Bearer $token")

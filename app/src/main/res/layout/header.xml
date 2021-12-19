@@ -6,21 +6,34 @@
     android:layout_height="200dp">
 
     <TextView
-        android:id="@+id/header_email"
+        android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/avatarProfile" />
 
     <Button
-        android:id="@+id/imageHeader"
+        android:id="@+id/avatarProfile"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatarProfile"
+        app:layout_constraintEnd_toEndOf="@+id/avatarProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/avatarProfile"
+        app:layout_constraintTop_toTopOf="@+id/avatarProfile"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo"
+        android:scaleType="fitCenter"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

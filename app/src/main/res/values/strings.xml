@@ -4,4 +4,5 @@
     <string name="login_screen_text">Please login \nTo see your new furry friends </string>
     <string name="petlisttitle">All your friends</string>
     <string name="register_screen_text">Your new account credentials</string>
+    <string name="profileTitle">Profile</string>
 </resources>
